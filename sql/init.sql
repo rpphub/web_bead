@@ -1,1 +1,2 @@
-CREATE TABLE `userdb`.`cooling_panels` (`id` INT NOT NULL AUTO_INCREMENT , `panel_id` INT NOT NULL , `timestamp` DATETIME NOT NULL , `temperature_c` DOUBLE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `userdb`.`events` (`id` INT NOT NULL AUTO_INCREMENT , `title` TEXT NOT NULL , `description` TEXT NOT NULL , `location` TEXT NOT NULL , `date` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+CREATE TABLE `userdb`.`registrations` (`id` INT NOT NULL AUTO_INCREMENT , `event_id` INT NOT NULL , `name` TEXT NOT NULL , `email` TEXT NOT NULL , `created_at` DATETIME NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
