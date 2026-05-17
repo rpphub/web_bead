@@ -1,6 +1,6 @@
 # Webprogramozás Beadandó
 ## Projekt leírás
-A projekt egy egyszerű eseménykezelő rendszert valósít meg, létre lehet hozni eseményeket, és regisztrálni lehet rájuk. Az eseményeknél látszódik hányan regisztráltak az adott eseményre és illetve, hogy kik.
+A projekt egy egyszerű eseménykezelő rendszert valósít meg, létre lehet hozni eseményeket, és regisztrálni lehet rájuk. Az eseményeknél látszódik hányan regisztráltak az adott eseményre illetve, hogy kik.
 
 ## Alkalmazott technológiák
 - Docker
@@ -19,6 +19,11 @@ docker compose up -d --build
 `
 Parancs kiadása után elindul a 3 container,
 Böngészőben a http://localhost:8000/ -on megjeleníthető a frontend.
+
+Három menüpont látható:
+- Események
+- Új esemény
+- Jelentkezés eseményre
 
 ## Konténerek
 - MYSQL DB
