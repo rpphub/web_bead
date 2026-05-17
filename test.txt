@@ -1,0 +1,8 @@
+http://localhost:8000/events
+
+{
+  "title": "teszt4",
+  "description": "desc",
+  "location": "bp",
+  "date": "2026-05-10T18:00:00"
+}

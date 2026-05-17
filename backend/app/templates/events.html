@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Events</h1>
+
+        <div>
+            <a href="/register-page" class="btn btn-primary">
+                Új esemény
+            </a>
+            <a href="/register-page" class="btn btn-primary">
+                Jelentkezés eseményre
+            </a>
+        </div>
+    </div>
+
+    <div id="eventsContainer" class="row g-4">
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='events.js') }}"></script>
+
+</body>
+</html>

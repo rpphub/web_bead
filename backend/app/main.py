@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from database import SessionLocal, engine
 import models
 import crud
@@ -20,8 +20,19 @@ def get_db():
 @app.route("/")
 def home():
     app.logger.info("Teszt Route.")
-    return jsonify({"message": "Event Manager API is running"})
+    return render_template("index.html")
 
+@app.route("/create-event")
+def create_event_page():
+    return render_template("create_event.html")
+
+@app.route("/register-page")
+def register_page():
+    return render_template("register.html")
+
+@app.route("/eventssite")
+def events_page():
+    return render_template("events.html")
 
 @app.route("/events", methods=["GET"])
 def get_events():

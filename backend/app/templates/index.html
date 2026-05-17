@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+</head>
+<body>
+
+<h1>Events</h1>
+
+<!-- EVENT LÉTREHOZÁS -->
+<h2>Create event</h2>
+
+<input id="title" placeholder="title">
+<input id="description" placeholder="description">
+<input id="location" placeholder="location">
+<input type="datetime-local" id="date" placeholder="date (YYYY-MM-DDTHH:MM:SS)">
+<input type="password" name="jelszomezo" value="abrakadabra">
+<button onclick="createNewEvent()">Create</button>
+
+<hr>
+
+<!-- EVENT LISTA -->
+<h2>Events</h2>
+<button onclick="loadEvents()">Load events</button>
+
+<ul id="events"></ul>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

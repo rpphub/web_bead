@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from database import Base
+from datetime import datetime
 
 class Event(Base):
     __tablename__ = "events"
@@ -13,6 +14,7 @@ class Event(Base):
 class Registration(Base):
     __tablename__ = "registrations"
 
+    created_at = Column(DateTime, default=datetime.utcnow)
     id = Column(Integer, primary_key=True)
     event_id = Column(Integer, ForeignKey("events.id"))
     name = Column(String(255))

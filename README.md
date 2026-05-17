@@ -1,13 +1,20 @@
-# GDE Devops Beadandó
+# Webprogramozás Beadandó
+## Projekt leírás
+A projekt egy egyszerű eseménykezelő rendszert valósít meg, létre lehet hozni eseményeket, és regisztrálni lehet rájuk.
+
+## Alkalmazott technológiák
+- Docker
+- Mysql
+- Python
+- Flask
+- Sqlalchemy
+- HTML/JS
+- Git
+- Bootstrap
+
 ## Futtatás
-Docker composeba van téve a 2 container így 1 parancs szükséges
 `
 docker compose up -d
 `
 Parancs kiadása után elindul a 2 container,
-Böngészőben a http://localhost:8080/ -on megjeleníthető a frontend.
-
-## Projekt leíárs
-2 docker container:
-- 1. Egy POST kéréseket fogadó REST API ami echozza az üzeneteket.
-- 2. Egy streamlit frontend amivel üzneteket küldünk és megjelenítjük a kapott echo üzeneteket.
+Böngészőben a http://localhost:8000/ -on megjeleníthető a frontend.
