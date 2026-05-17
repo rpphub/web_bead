@@ -1,20 +1,24 @@
 from flask import Flask, request, jsonify, render_template
-from database import SessionLocal, engine
+import database
 import models
 import crud
 import schemas
+import time
 
-models.Base.metadata.create_all(bind=engine)
 
 app = Flask(__name__)
 
+engine = database.init_db()
+database.is_ready()
+
+models.Base.metadata.create_all(bind=engine)
 
 def get_db():
-    db = SessionLocal()
+    db = database.SessionLocal()
     try:
-        return db
+        yield db
     finally:
-        pass
+        db.close()
 
 
 @app.route("/")
@@ -36,7 +40,7 @@ def events_page():
 
 @app.route("/events", methods=["GET"])
 def get_events():
-    db = SessionLocal()
+    db = database.SessionLocal()
 
     try:
         page = int(request.args.get("page", 1))
@@ -78,7 +82,7 @@ def get_events():
 @app.route("/events/<int:event_id>/registrations", methods=["GET"])
 def get_event_registrations(event_id):
 
-    db = SessionLocal()
+    db = database.SessionLocal()
 
     try:
 
@@ -104,7 +108,7 @@ def get_event_registrations(event_id):
 
 @app.route("/events/<int:event_id>", methods=["GET"])
 def get_event(event_id):
-    db = SessionLocal()
+    db = database.SessionLocal()
     try:
         event = crud.get_event_by_id(db, event_id)
 
@@ -126,7 +130,7 @@ def get_event(event_id):
 def create_event():
     app.logger.info("Teszt Add event.")
 
-    db = SessionLocal()
+    db = database.SessionLocal()
     try:
         data = request.get_json()
         app.logger.info(data)
@@ -151,7 +155,7 @@ def create_event():
 
 @app.route("/register", methods=["POST"])
 def register():
-    db = SessionLocal()
+    db = database.SessionLocal()
     try:
         data = request.get_json()
 

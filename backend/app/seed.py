@@ -1,10 +1,16 @@
-from database import SessionLocal, engine
+import database
 import models
 import random
+from datetime import datetime
+import time
+
+
+engine = database.init_db()
+database.is_ready()
 
 models.Base.metadata.create_all(bind=engine)
 
-db = SessionLocal()
+db = database.SessionLocal()
 
 if db.query(models.Event).count() == 0:
     event_titles = [
@@ -40,7 +46,7 @@ if db.query(models.Event).count() == 0:
             title=event_titles[i],
             description=f"{event_titles[i]} hivatalos esemény leírása.",
             location=event_locations[i],
-            date=None
+            date=datetime(2026, 6, 15, 18, 0)
         )
         db.add(event)
         db.flush()

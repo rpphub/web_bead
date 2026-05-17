@@ -9,4 +9,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 #X while debug
 #COPY app .
 
-CMD ["python","main.py"]
+CMD ["sh", "-c", "sleep 3 && python seed.py && python main.py"]
