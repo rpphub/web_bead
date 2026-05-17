@@ -20,7 +20,7 @@ def get_db():
 @app.route("/")
 def home():
     app.logger.info("Teszt Route.")
-    return render_template("index.html")
+    return render_template("events.html")
 
 @app.route("/create-event")
 def create_event_page():
@@ -50,12 +50,51 @@ def get_events():
 
         result = []
         for event in events:
+
+            registrations = crud.get_registrations_by_event(
+            db,
+            event.id  # type: ignore
+            )
+
             result.append({
                 "id": event.id,
                 "title": event.title,
                 "description": event.description,
                 "location": event.location,
-                "date": event.date.isoformat() if event.date is not None else None
+                "date": event.date.isoformat() if event.date is not None else None,
+                "registration_count": len(registrations)
+            })
+            
+        total = db.query(models.Event).count()
+
+        return jsonify({
+            "data": result,
+            "total": total
+        })
+
+    finally:
+        db.close()
+
+@app.route("/events/<int:event_id>/registrations", methods=["GET"])
+def get_event_registrations(event_id):
+
+    db = SessionLocal()
+
+    try:
+
+        registrations = crud.get_registrations_by_event(
+            db,
+            event_id
+        )
+
+        result = []
+
+        for reg in registrations:
+
+            result.append({
+                "id": reg.id,
+                "name": reg.name,
+                "email": reg.email
             })
 
         return jsonify(result)

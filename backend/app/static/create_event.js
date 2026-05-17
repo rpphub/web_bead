@@ -1,4 +1,4 @@
-async function createEvent() {
+async function handleCreateEvent() {
 
     const title =
         document.getElementById("title").value.trim();

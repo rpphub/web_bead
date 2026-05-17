@@ -20,3 +20,11 @@ def create_registration(db: Session, reg):
 
 def get_event_by_id(db, event_id):
     return db.query(models.Event).filter(models.Event.id == event_id).first()
+
+def get_registrations_by_event(db: Session, event_id: int):
+
+    return (
+        db.query(models.Registration)
+        .filter(models.Registration.event_id == event_id)
+        .all()
+    )
